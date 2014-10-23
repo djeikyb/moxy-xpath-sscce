@@ -28,7 +28,7 @@ public final class Main {
     public static void main(String[] args) throws JAXBException, XMLStreamException {
         OTAHotelInvCountNotifRQ orig = gen();
 
-        JAXBContext ctx = (JAXBContext) JAXBContextFactory.createContext("org.opentravel.ota._2003._05", Main.class.getClassLoader());
+        JAXBContext ctx = (JAXBContext) JAXBContextFactory.createContext(OTAHotelInvCountNotifRQ.class.getPackage().getName(), Main.class.getClassLoader());
 
         StringWriter writer = new StringWriter();
         JAXBMarshaller ma = ctx.createMarshaller();

@@ -34,9 +34,9 @@ public final class Main {
         JAXBMarshaller ma = ctx.createMarshaller();
         ma.setProperty(JAXBMarshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         ma.marshal(orig, writer);
-        logger.debug("\n" + writer.toString());
-
         String xml = writer.toString();
+        logger.debug("\n" + xml);
+
         StringReader reader = new StringReader(xml);
         OTAHotelInvCountNotifRQ copy = (OTAHotelInvCountNotifRQ) ctx.createUnmarshaller().unmarshal(reader);
         assert copy.getInventories().getInventory().get(0).getUniqueID().getID() != null;
@@ -51,7 +51,7 @@ public final class Main {
         assertThat("inventories's unique id id attr", inventories.getUniqueID().getID(), is(UNIQUE_ID_ID));
     }
 
-    public static OTAHotelInvCountNotifRQ gen() {
+    private static OTAHotelInvCountNotifRQ gen() {
         ObjectFactory fac = new ObjectFactory();
         OTAHotelInvCountNotifRQ rq = fac.createOTAHotelInvCountNotifRQ();
         rq.setAltLangID(ALT_LANG_ID);

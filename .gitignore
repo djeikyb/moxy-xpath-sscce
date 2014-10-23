@@ -1,0 +1,12 @@
+# maven
+/target
+/*.log
+
+# eclipse
+/.project
+/.classpath
+/.settings
+
+# other
+*.swp
+

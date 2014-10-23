@@ -1,0 +1,7 @@
+<Transaction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <SendingCustomer firstName="test" lastNameDecrypted="SMITH"
+        OnWUTrustList="false" WUTrustListType="NONE">
+
+    </SendingCustomer>
+</Transaction>

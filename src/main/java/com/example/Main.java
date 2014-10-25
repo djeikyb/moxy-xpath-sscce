@@ -48,7 +48,7 @@ public final class Main {
         InvCountType inventories = ctx.getValueByXPath(copy, "Inventories", null, InvCountType.class);
         assertThat("inventories", inventories, is(not(nullValue())));
         assertThat("inventories's area id attr", inventories.getAreaID(), is(AREA_ID));
-        assertThat("inventories's unique id id attr", inventories.getUniqueID().getID(), is(UNIQUE_ID_ID));
+        assertThat("inventories's unique id id attr", inventories.getInventory().get(0).getUniqueID().getID(), is(UNIQUE_ID_ID));
     }
 
     private static OTAHotelInvCountNotifRQ gen() {

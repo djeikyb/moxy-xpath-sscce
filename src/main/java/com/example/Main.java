@@ -12,6 +12,7 @@ import javax.xml.stream.XMLStreamException;
 import org.eclipse.persistence.jaxb.JAXBContext;
 import org.eclipse.persistence.jaxb.JAXBContextFactory;
 import org.eclipse.persistence.jaxb.JAXBMarshaller;
+import org.eclipse.persistence.oxm.NamespaceResolver;
 import org.opentravel.ota._2003._05.InvCountType;
 import org.opentravel.ota._2003._05.OTAHotelInvCountNotifRQ;
 import org.opentravel.ota._2003._05.ObjectFactory;
@@ -45,7 +46,10 @@ public final class Main {
         String altLangId = ctx.getValueByXPath(copy, "@AltLangID", null, String.class);
         assertThat("rq's altlang attr", altLangId, is(ALT_LANG_ID));
 
-        InvCountType inventories = ctx.getValueByXPath(copy, "Inventories", null, InvCountType.class);
+        NamespaceResolver nsr = new NamespaceResolver();
+        nsr.put("ns", "http://www.opentravel.org/OTA/2003/05");
+
+        InvCountType inventories = ctx.getValueByXPath(copy, "ns:Inventories", nsr, InvCountType.class);
         assertThat("inventories", inventories, is(not(nullValue())));
         assertThat("inventories's area id attr", inventories.getAreaID(), is(AREA_ID));
         assertThat("inventories's unique id id attr", inventories.getInventory().get(0).getUniqueID().getID(), is(UNIQUE_ID_ID));
